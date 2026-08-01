@@ -8,19 +8,33 @@ Follow these instructions to get a copy of the project up and running on your lo
 
 ### Dependencies
 
-- Modern web browser (Chrome, Firefox, Edge, etc.)
-- No additional dependencies required
+- [Node.js](https://nodejs.org/) 18.18 or later
+- npm (bundled with Node.js)
 
 ### Installation
 
 1. Fork this repository to your GitHub account. Use the "Fork" button on the top right corner of the repository page.
 2. Clone your forked repository to your local machine.
-3. Open the `index.html` file in your preferred web browser.
+3. Install dependencies and start the dev server.
 
 ```bash
 git clone https://github.com/your-username/<<name of your forked repo>>.git
 cd <<name of your forked repo>>
-# Open index.html in your browser
+npm install
+npm run dev
+# Open http://localhost:3000 in your browser
+```
+
+The original legacy HTML/CSS/JS implementation is preserved under [legacy/](legacy/) for reference.
+
+### Running Tests
+
+This project uses [Vitest](https://vitest.dev/) along with React Testing Library for unit and component tests.
+
+```bash
+npm test              # Run the full test suite once
+npm run test:watch    # Run tests in watch mode
+npm run test:coverage # Run tests and generate a coverage report
 ```
 
 ## Project Instructions
@@ -46,9 +60,9 @@ Use GitHub Copilot to refactor the code for this game to use React, NextJS, and 
 
 ## Built With
 
-- [HTML5](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5) - Markup for the game interface
-- [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS) - Styling for the game board and controls
-- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) - Game logic and board generation
+- [Next.js](https://nextjs.org/) - React framework (App Router)
+- [React](https://react.dev/) & [TypeScript](https://www.typescriptlang.org/) - Component-based UI with static typing
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first styling
 
 ## License
 

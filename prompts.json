@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json.schemastore.org/prompts.json",
+  "description": "Favorite GitHub Copilot prompt templates for this project.",
+  "prompts": [
+    {
+      "name": "refactor-legacy-to-react",
+      "title": "Refactor legacy JS to React component",
+      "description": "Convert a chunk of legacy DOM-manipulation code into a small, focused React functional component with hooks.",
+      "template": "Refactor the following legacy JavaScript (from legacy/sudoku.js) into a React functional component using TypeScript and hooks. Replace DOM manipulation (getElementById, innerHTML) with React state/JSX, preserve existing game logic exactly, and follow this repo's ES6+/TypeScript best practices:\n\n{{code}}"
+    },
+    {
+      "name": "extract-custom-hook",
+      "title": "Extract logic into a custom hook",
+      "description": "Pull stateful logic out of a component into a reusable custom hook.",
+      "template": "Extract the state and side-effect logic from this component into a custom hook named use{{HookName}}. Keep the component presentational, use TypeScript with explicit types, and add tests following this repo's existing *.test.tsx conventions:\n\n{{code}}"
+    },
+    {
+      "name": "write-unit-tests",
+      "title": "Write unit tests for a module",
+      "description": "Generate Vitest + Testing Library tests matching the repo's existing test style.",
+      "template": "Write Vitest unit tests for the following module/component, matching the style of existing *.test.ts(x) files in this repo (arrange/act/assert, descriptive it() names, edge cases covered). Do not use fake timers with userEvent clicks; prefer fireEvent wrapped in act():\n\n{{code}}"
+    },
+    {
+      "name": "explain-sudoku-algorithm",
+      "title": "Explain a sudoku algorithm",
+      "description": "Ask Copilot to explain the logic/complexity of a sudoku solver/generator function.",
+      "template": "Explain what this function does step by step, including its time complexity and any edge cases or failure modes (e.g. backtracking blowups):\n\n{{code}}"
+    },
+    {
+      "name": "add-tailwind-styling",
+      "title": "Add Tailwind styling to a component",
+      "description": "Apply mobile-first Tailwind utility classes to an existing component.",
+      "template": "Add Tailwind CSS utility classes to style this component, following a mobile-first approach with responsive prefixes (sm:, md:, lg:). Use cn() for conditional classes and avoid custom CSS:\n\n{{code}}"
+    },
+    {
+      "name": "code-review",
+      "title": "Review a diff for best practices",
+      "description": "Request a review of a diff against this repo's coding standards.",
+      "template": "Review the following diff against this repo's coding standards (ES6+ syntax, strict TypeScript, functional React components, Tailwind-only styling). Point out violations and suggest concrete fixes:\n\n{{diff}}"
+    }
+  ]
+}
