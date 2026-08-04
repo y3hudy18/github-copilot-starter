@@ -1,6 +1,6 @@
 import { act, renderHook } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { useDarkMode } from "./useDarkMode";
+import { useDarkMode } from "@/hooks/useDarkMode";
 
 const STORAGE_KEY = "sudoku-color-scheme";
 

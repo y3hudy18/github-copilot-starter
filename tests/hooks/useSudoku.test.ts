@@ -1,7 +1,7 @@
 import { act, renderHook } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { isBoardComplete } from "@/lib/sudoku";
-import { useSudoku } from "./useSudoku";
+import { useSudoku } from "@/hooks/useSudoku";
 
 describe("useSudoku", () => {
   it("starts with a medium puzzle by default", () => {

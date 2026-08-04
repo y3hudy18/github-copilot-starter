@@ -1,7 +1,12 @@
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
-import { LEADERBOARD_STORAGE_KEY, MAX_LEADERBOARD_ENTRIES } from "./constants";
-import { addEntryToLeaderboard, loadLeaderboard, saveLeaderboard, sortByFastestTime } from "./storage";
-import type { LeaderboardEntry } from "./types";
+import { LEADERBOARD_STORAGE_KEY, MAX_LEADERBOARD_ENTRIES } from "@/lib/leaderboard/constants";
+import {
+  addEntryToLeaderboard,
+  loadLeaderboard,
+  saveLeaderboard,
+  sortByFastestTime,
+} from "@/lib/leaderboard/storage";
+import type { LeaderboardEntry } from "@/lib/leaderboard/types";
 
 const buildEntry = (overrides: Partial<LeaderboardEntry> = {}): LeaderboardEntry => ({
   id: "id-1",

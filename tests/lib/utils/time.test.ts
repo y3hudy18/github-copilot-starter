@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { formatElapsedTime } from "./time";
+import { formatElapsedTime } from "@/lib/utils/time";
 
 describe("formatElapsedTime", () => {
   it("formats 0 seconds as 0:00", () => {

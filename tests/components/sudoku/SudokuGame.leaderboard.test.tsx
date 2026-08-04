@@ -27,7 +27,7 @@ vi.mock("@/lib/sudoku", async () => {
   };
 });
 
-const { SudokuGame } = await import("./SudokuGame");
+const { SudokuGame } = await import("@/components/sudoku/SudokuGame");
 
 describe("SudokuGame leaderboard integration", () => {
   beforeEach(() => {

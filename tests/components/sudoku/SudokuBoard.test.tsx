@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 import { createEmptyBoard } from "@/lib/sudoku/board";
-import { SudokuBoard } from "./SudokuBoard";
+import { SudokuBoard } from "@/components/sudoku/SudokuBoard";
 
 const buildPrefilledMask = (rows: number, cols: number, prefilledValue = false) =>
   Array.from({ length: rows }, () => Array.from({ length: cols }, () => prefilledValue));

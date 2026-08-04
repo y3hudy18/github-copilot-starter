@@ -1,7 +1,7 @@
 import { act, renderHook } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { LEADERBOARD_STORAGE_KEY } from "@/lib/leaderboard";
-import { useLeaderboard } from "./useLeaderboard";
+import { useLeaderboard } from "@/hooks/useLeaderboard";
 
 describe("useLeaderboard", () => {
   beforeEach(() => {

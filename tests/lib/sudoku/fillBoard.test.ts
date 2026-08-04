@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { createEmptyBoard, isSafePlacement } from "./board";
-import { BOARD_SIZE, EMPTY_CELL } from "./constants";
-import { fillBoard } from "./fillBoard";
-import type { Board } from "./types";
+import { createEmptyBoard, isSafePlacement } from "@/lib/sudoku/board";
+import { BOARD_SIZE, EMPTY_CELL } from "@/lib/sudoku/constants";
+import { fillBoard } from "@/lib/sudoku/fillBoard";
+import type { Board } from "@/lib/sudoku/types";
 
 const isValidSolvedBoard = (board: Board): boolean => {
   for (let row = 0; row < BOARD_SIZE; row += 1) {

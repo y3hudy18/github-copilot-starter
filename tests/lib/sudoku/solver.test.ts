@@ -1,9 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { createEmptyBoard } from "./board";
-import { EMPTY_CELL } from "./constants";
-import { fillBoard } from "./fillBoard";
-import { countSolutions, hasUniqueSolution } from "./solver";
-import type { Board } from "./types";
+import { createEmptyBoard } from "@/lib/sudoku/board";
+import { EMPTY_CELL } from "@/lib/sudoku/constants";
+import { fillBoard } from "@/lib/sudoku/fillBoard";
+import { countSolutions, hasUniqueSolution } from "@/lib/sudoku/solver";
+import type { Board } from "@/lib/sudoku/types";
 
 // Fills box(0,0)'s other 8 cells with 2-9 and places 1 elsewhere in row 0, so
 // every candidate for the empty (0,0) cell is rejected immediately (no backtracking).

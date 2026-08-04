@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
-import { GameControls } from "./GameControls";
+import { GameControls } from "@/components/sudoku/GameControls";
 
 describe("GameControls", () => {
   it("renders a New Game button", () => {

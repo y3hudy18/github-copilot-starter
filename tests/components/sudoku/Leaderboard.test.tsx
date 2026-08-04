@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import type { LeaderboardEntry } from "@/lib/leaderboard";
-import { Leaderboard } from "./Leaderboard";
+import { Leaderboard } from "@/components/sudoku/Leaderboard";
 
 const buildEntry = (overrides: Partial<LeaderboardEntry> = {}): LeaderboardEntry => ({
   id: "id-1",

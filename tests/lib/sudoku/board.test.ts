@@ -1,12 +1,12 @@
 import { describe, expect, it } from "vitest";
-import { BOARD_SIZE, EMPTY_CELL } from "./constants";
+import { BOARD_SIZE, EMPTY_CELL } from "@/lib/sudoku/constants";
 import {
   createEmptyBoard,
   deepCopyBoard,
   findEmptyCell,
   isSafePlacement,
   shuffledDigits,
-} from "./board";
+} from "@/lib/sudoku/board";
 
 describe("createEmptyBoard", () => {
   it("creates a 9x9 board filled with EMPTY_CELL", () => {

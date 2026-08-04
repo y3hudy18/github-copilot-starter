@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { DIFFICULTIES, DIFFICULTY_CLUES } from "./constants";
-import { generatePuzzle } from "./generator";
-import { countSolutions } from "./solver";
-import type { Board } from "./types";
+import { DIFFICULTIES, DIFFICULTY_CLUES } from "@/lib/sudoku/constants";
+import { generatePuzzle } from "@/lib/sudoku/generator";
+import { countSolutions } from "@/lib/sudoku/solver";
+import type { Board } from "@/lib/sudoku/types";
 
 const countClues = (board: Board): number =>
   board.reduce((total, row) => total + row.filter((value) => value !== 0).length, 0);
