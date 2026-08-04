@@ -22,6 +22,7 @@ export const SudokuGame = () => {
     incorrectCells,
     hintCells,
     hintUsed,
+    hintCount,
     isSolved,
     hasStarted,
     changeDifficulty,
@@ -52,10 +53,10 @@ export const SudokuGame = () => {
 
   const handleSaveScore = useCallback(
     (name: string) => {
-      addLeaderboardEntry(name, elapsedSeconds, difficulty);
+      addLeaderboardEntry(name, elapsedSeconds, difficulty, hintCount);
       setHasSavedScore(true);
     },
-    [addLeaderboardEntry, elapsedSeconds, difficulty],
+    [addLeaderboardEntry, elapsedSeconds, difficulty, hintCount],
   );
 
   return (

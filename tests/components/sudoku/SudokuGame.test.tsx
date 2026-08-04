@@ -2,7 +2,7 @@ import { act, fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { DIFFICULTY_LABELS } from "@/lib/sudoku/constants";
-import { SudokuGame } from "./SudokuGame";
+import { SudokuGame } from "@/components/sudoku/SudokuGame";
 
 describe("SudokuGame", () => {
   it("renders the title, difficulty selector, board, and controls", () => {

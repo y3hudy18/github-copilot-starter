@@ -1,7 +1,7 @@
 import { act, renderHook } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { isBoardComplete } from "@/lib/sudoku";
-import { useSudoku } from "./useSudoku";
+import { useSudoku } from "@/hooks/useSudoku";
 
 describe("useSudoku", () => {
   it("starts with a medium puzzle by default", () => {
@@ -147,6 +147,31 @@ describe("useSudoku", () => {
     expect(result.current.hintCells.size).toBe(1);
   });
 
+  it("starts with a hintCount of 0 and increments it when a hint is given", () => {
+    const { result } = renderHook(() => useSudoku("easy"));
+
+    expect(result.current.hintCount).toBe(0);
+
+    act(() => {
+      result.current.giveHint();
+    });
+
+    expect(result.current.hintCount).toBe(1);
+  });
+
+  it("does not increment hintCount when giveHint is called again", () => {
+    const { result } = renderHook(() => useSudoku("easy"));
+
+    act(() => {
+      result.current.giveHint();
+    });
+    act(() => {
+      result.current.giveHint();
+    });
+
+    expect(result.current.hintCount).toBe(1);
+  });
+
   it("does not fill another cell when giveHint is called again", () => {
     const { result } = renderHook(() => useSudoku("easy"));
 
@@ -178,6 +203,7 @@ describe("useSudoku", () => {
 
     expect(result.current.hintUsed).toBe(false);
     expect(result.current.hintCells.size).toBe(0);
+    expect(result.current.hintCount).toBe(0);
   });
 
   it("resets hintUsed and hintCells on changeDifficulty", () => {
@@ -194,6 +220,7 @@ describe("useSudoku", () => {
 
     expect(result.current.hintUsed).toBe(false);
     expect(result.current.hintCells.size).toBe(0);
+    expect(result.current.hintCount).toBe(0);
   });
 
   it("does nothing when the board has no empty cells", () => {

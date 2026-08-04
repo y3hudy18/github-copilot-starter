@@ -26,6 +26,9 @@ export const Leaderboard = ({ entries }: LeaderboardProps) => {
           </span>
           <span className="flex-1 truncate text-slate-800 dark:text-slate-100">{entry.name}</span>
           <span className="text-slate-500 dark:text-slate-400">{DIFFICULTY_LABELS[entry.difficulty]}</span>
+          <span className="text-slate-500 dark:text-slate-400">
+            {entry.hintsUsed} {entry.hintsUsed === 1 ? "hint" : "hints"}
+          </span>
           <span className="font-mono tabular-nums text-slate-800 dark:text-slate-100">
             {formatElapsedTime(entry.elapsedSeconds)}
           </span>

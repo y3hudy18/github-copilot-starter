@@ -27,14 +27,31 @@ npm run dev
 
 The original legacy HTML/CSS/JS implementation is preserved under [legacy/](legacy/) for reference.
 
-### Running Tests
+## Testing
 
-This project uses [Vitest](https://vitest.dev/) along with React Testing Library for unit and component tests.
+Tests live under [tests/](tests/), mirroring the `src/` structure, and use Vitest with jsdom.
 
 ```bash
-npm test              # Run the full test suite once
-npm run test:watch    # Run tests in watch mode
-npm run test:coverage # Run tests and generate a coverage report
+npm test            # run the full suite once
+npm run test:watch  # watch mode
+npm run test:coverage
+```
+
+### Baseline (pre-refactor) evidence
+
+Commit [`3beff11e`](https://github.com/y3hudy18/github-copilot-starter/commit/3beff11e) is the last
+commit before the React/Next.js refactor began (`4244618` — "feat: scaffold Next.js/React/TypeScript
+sudoku migration" — introduced the Next.js app,
+game logic, and full Vitest suite all at once, so no automated tests existed prior to it). The files
+under [legacy/](legacy/) today are byte-identical to that commit's `index.html`/`sudoku.js`/`styles.css`
+(verified with `git diff 3beff11e:sudoku.js HEAD:legacy/sudoku.js`, empty output).
+
+[tests/legacy/sudoku.legacy.test.ts](tests/legacy/sudoku.legacy.test.ts) is a smoke test written against
+that untouched legacy script (board renders, exposes `newGame`/`checkSolution`, flags incorrect entries),
+run in isolation to demonstrate the pre-refactor game worked before any refactor changes:
+
+```bash
+npx vitest run tests/legacy/sudoku.legacy.test.ts
 ```
 
 ## Project Instructions

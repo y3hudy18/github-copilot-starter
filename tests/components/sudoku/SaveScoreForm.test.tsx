@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
-import { SaveScoreForm } from "./SaveScoreForm";
+import { SaveScoreForm } from "@/components/sudoku/SaveScoreForm";
 
 describe("SaveScoreForm", () => {
   it("renders a name input and a disabled Save Score button", () => {

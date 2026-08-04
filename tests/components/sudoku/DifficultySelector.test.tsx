@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 import { DIFFICULTY_LABELS } from "@/lib/sudoku/constants";
-import { DifficultySelector } from "./DifficultySelector";
+import { DifficultySelector } from "@/components/sudoku/DifficultySelector";
 
 describe("DifficultySelector", () => {
   it("renders a button for each difficulty", () => {

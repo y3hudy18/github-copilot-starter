@@ -5,5 +5,6 @@ export interface LeaderboardEntry {
   name: string;
   elapsedSeconds: number;
   difficulty: Difficulty;
+  hintsUsed: number;
   completedAt: string;
 }

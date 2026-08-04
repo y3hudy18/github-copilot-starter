@@ -8,6 +8,8 @@ export default defineConfig({
     environment: 'jsdom',
     globals: true,
     setupFiles: ['./vitest.setup.ts'],
+    // Tests live in tests/ rather than colocated with src/.
+    include: ['tests/**/*.test.{ts,tsx}'],
     css: true,
     // Sudoku puzzle generation is backtracking-heavy; coverage instrumentation slows it down further.
     testTimeout: 15000,

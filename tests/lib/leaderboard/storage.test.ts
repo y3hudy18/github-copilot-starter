@@ -1,13 +1,14 @@
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
-import { LEADERBOARD_STORAGE_KEY, MAX_LEADERBOARD_ENTRIES } from "./constants";
-import { addEntryToLeaderboard, loadLeaderboard, saveLeaderboard, sortByFastestTime } from "./storage";
-import type { LeaderboardEntry } from "./types";
+import { LEADERBOARD_STORAGE_KEY, MAX_LEADERBOARD_ENTRIES } from "@/lib/leaderboard/constants";
+import { addEntryToLeaderboard, loadLeaderboard, saveLeaderboard, sortByFastestTime } from "@/lib/leaderboard/storage";
+import type { LeaderboardEntry } from "@/lib/leaderboard/types";
 
 const buildEntry = (overrides: Partial<LeaderboardEntry> = {}): LeaderboardEntry => ({
   id: "id-1",
   name: "Ada",
   elapsedSeconds: 60,
   difficulty: "easy",
+  hintsUsed: 0,
   completedAt: "2026-01-01T00:00:00.000Z",
   ...overrides,
 });
@@ -86,5 +87,26 @@ describe("loadLeaderboard / saveLeaderboard", () => {
     saveLeaderboard(entries);
 
     expect(loadLeaderboard()).toEqual(entries);
+  });
+
+  it("round-trips a non-zero hintsUsed value", () => {
+    const entries = [buildEntry({ hintsUsed: 2 })];
+
+    saveLeaderboard(entries);
+
+    expect(loadLeaderboard()[0].hintsUsed).toBe(2);
+  });
+
+  it("defaults hintsUsed to 0 for entries saved before the field existed", () => {
+    const legacyEntry = {
+      id: "legacy-1",
+      name: "Grace",
+      elapsedSeconds: 45,
+      difficulty: "medium",
+      completedAt: "2026-01-01T00:00:00.000Z",
+    };
+    window.localStorage.setItem(LEADERBOARD_STORAGE_KEY, JSON.stringify([legacyEntry]));
+
+    expect(loadLeaderboard()[0].hintsUsed).toBe(0);
   });
 });

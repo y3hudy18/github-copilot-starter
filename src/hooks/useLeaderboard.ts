@@ -8,25 +8,29 @@ const createEntryId = (): string => `${Date.now()}-${Math.random().toString(36).
 
 interface UseLeaderboardResult {
   entries: LeaderboardEntry[];
-  addEntry: (name: string, elapsedSeconds: number, difficulty: Difficulty) => void;
+  addEntry: (name: string, elapsedSeconds: number, difficulty: Difficulty, hintsUsed: number) => void;
 }
 
 export const useLeaderboard = (): UseLeaderboardResult => {
   const [entries, setEntries] = useState<LeaderboardEntry[]>(() => loadLeaderboard());
 
-  const addEntry = useCallback((name: string, elapsedSeconds: number, difficulty: Difficulty) => {
-    setEntries((previous) => {
-      const nextEntries = addEntryToLeaderboard(previous, {
-        id: createEntryId(),
-        name,
-        elapsedSeconds,
-        difficulty,
-        completedAt: new Date().toISOString(),
+  const addEntry = useCallback(
+    (name: string, elapsedSeconds: number, difficulty: Difficulty, hintsUsed: number) => {
+      setEntries((previous) => {
+        const nextEntries = addEntryToLeaderboard(previous, {
+          id: createEntryId(),
+          name,
+          elapsedSeconds,
+          difficulty,
+          hintsUsed,
+          completedAt: new Date().toISOString(),
+        });
+        saveLeaderboard(nextEntries);
+        return nextEntries;
       });
-      saveLeaderboard(nextEntries);
-      return nextEntries;
-    });
-  }, []);
+    },
+    [],
+  );
 
   return { entries, addEntry };
 };

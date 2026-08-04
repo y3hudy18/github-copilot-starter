@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { Timer } from "./Timer";
+import { Timer } from "@/components/sudoku/Timer";
 
 describe("Timer", () => {
   it("renders 0:00 when no time has elapsed", () => {

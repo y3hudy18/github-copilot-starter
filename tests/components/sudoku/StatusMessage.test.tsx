@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { StatusMessage } from "./StatusMessage";
+import { StatusMessage } from "@/components/sudoku/StatusMessage";
 
 describe("StatusMessage", () => {
   it("shows a success message when solved", () => {

@@ -24,6 +24,7 @@ interface UseSudokuResult {
   incorrectCells: Set<string>;
   hintCells: Set<string>;
   hintUsed: boolean;
+  hintCount: number;
   isSolved: boolean;
   hasStarted: boolean;
   changeDifficulty: (difficulty: Difficulty) => void;
@@ -41,14 +42,15 @@ const startNewPuzzle = (difficulty: Difficulty) => {
     solution,
     incorrectCells: new Set<string>(),
     hintCells: new Set<string>(),
+    hintCount: 0,
     hasStarted: false,
   };
 };
 
 export const useSudoku = (initialDifficulty: Difficulty = DEFAULT_DIFFICULTY): UseSudokuResult => {
   const [difficulty, setDifficulty] = useState<Difficulty>(initialDifficulty);
-  const [{ board, prefilled, incorrectCells, hintCells, hasStarted }, setGameState] = useState(() =>
-    startNewPuzzle(initialDifficulty),
+  const [{ board, prefilled, incorrectCells, hintCells, hintCount, hasStarted }, setGameState] = useState(
+    () => startNewPuzzle(initialDifficulty),
   );
 
   const newGame = useCallback(() => {
@@ -94,6 +96,7 @@ export const useSudoku = (initialDifficulty: Difficulty = DEFAULT_DIFFICULTY): U
         prefilled: nextPrefilled,
         incorrectCells: new Set<string>(),
         hintCells: new Set([`${row}-${col}`]),
+        hintCount: previous.hintCount + 1,
       };
     });
   }, []);
@@ -119,6 +122,7 @@ export const useSudoku = (initialDifficulty: Difficulty = DEFAULT_DIFFICULTY): U
     incorrectCells,
     hintCells,
     hintUsed: hintCells.size > 0,
+    hintCount,
     isSolved,
     hasStarted,
     changeDifficulty,

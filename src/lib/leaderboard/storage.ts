@@ -15,7 +15,12 @@ export const loadLeaderboard = (): LeaderboardEntry[] => {
     const raw = window.localStorage.getItem(LEADERBOARD_STORAGE_KEY);
     if (!raw) return [];
     const parsed: unknown = JSON.parse(raw);
-    return Array.isArray(parsed) ? (parsed as LeaderboardEntry[]) : [];
+    if (!Array.isArray(parsed)) return [];
+    // Older saved entries predate hintsUsed; default them to 0 for compatibility.
+    return (parsed as LeaderboardEntry[]).map((entry) => ({
+      ...entry,
+      hintsUsed: entry.hintsUsed ?? 0,
+    }));
   } catch {
     return [];
   }

@@ -27,7 +27,7 @@ vi.mock("@/lib/sudoku", async () => {
   };
 });
 
-const { SudokuGame } = await import("./SudokuGame");
+const { SudokuGame } = await import("@/components/sudoku/SudokuGame");
 
 describe("SudokuGame leaderboard integration", () => {
   beforeEach(() => {
@@ -49,7 +49,9 @@ describe("SudokuGame leaderboard integration", () => {
     fireEvent.change(screen.getByLabelText(/your name/i), { target: { value: "Ada" } });
     fireEvent.click(screen.getByRole("button", { name: "Save Score" }));
 
-    expect(screen.getByRole("list")).toHaveTextContent("Ada");
+    const list = screen.getByRole("list");
+    expect(list).toHaveTextContent("Ada");
+    expect(list).toHaveTextContent("1 hint");
     expect(screen.queryByLabelText(/your name/i)).not.toBeInTheDocument();
   });
 });
